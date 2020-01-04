@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         String Username=username.getText().toString();
         String Userpassword=userpassword.getText().toString();
         SharedPreferences sp=getSharedPreferences("test",MODE_PRIVATE);
-        if (Username.equals(sp.getString("User", "")) && Userpassword.equals(sp.getString("PW", ""))) {
+        if (Username.equals(sp.getString("NAME", "")) && Userpassword.equals(sp.getString("PW", ""))) {
             Intent intent=new Intent(this,EnterActivity.class);
             startActivity(intent);
         }else{

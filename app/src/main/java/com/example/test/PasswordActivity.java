@@ -15,12 +15,12 @@ public class PasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_password);
     }
-    public void login(View view){
-        EditText password=findViewById(R.id.Secondpass);
-        String userpassword=password.getText().toString();
-        SharedPreferences sp=getSharedPreferences("this",MODE_PRIVATE);
+    public void login2(View view){
+        EditText pass=findViewById(R.id.secendpass);
+        String UserPass=pass.getText().toString();
+        SharedPreferences sp=getSharedPreferences("test",MODE_PRIVATE);
         sp.edit()
-                .putString("PW",userpassword)
+                .putString("PW",UserPass)
                 .commit();
         Intent intent=new Intent(this,MainActivity.class);
         startActivity(intent);

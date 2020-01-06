@@ -19,7 +19,8 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
     public boolean logon=false;
     private EditText username;
-    private EditText userpassword;
+    private EditText up;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         username = findViewById(R.id.name);
-        userpassword = findViewById(R.id.password);
+        up =findViewById(R.id.pass);
         SharedPreferences sp=getSharedPreferences("test",MODE_PRIVATE);
         username.setText(sp.getString("NAME",""));
-        userpassword.setText(sp.getString("PW",""));
+        up.setText(sp.getString("PW","132"));
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,9 +50,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void enter(View view){
         String Username=username.getText().toString();
-        String Userpassword=userpassword.getText().toString();
+        String UP=up.getText().toString();
         SharedPreferences sp=getSharedPreferences("test",MODE_PRIVATE);
-        if (Username.equals(sp.getString("NAME", "")) && Userpassword.equals(sp.getString("PW", ""))) {
+        if (Username.equals(sp.getString("NAME", ""))&&UP.equals(sp.getString("PW",""))) {
             Intent intent=new Intent(this,EnterActivity.class);
             startActivity(intent);
         }else{

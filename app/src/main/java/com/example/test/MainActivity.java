@@ -14,13 +14,16 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     public boolean logon=false;
     private EditText username;
     private EditText up;
-
+    public boolean isNext=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,16 +32,26 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         username = findViewById(R.id.name);
-        up =findViewById(R.id.pass);
-        SharedPreferences sp=getSharedPreferences("test",MODE_PRIVATE);
-        username.setText(sp.getString("NAME",""));
-        up.setText(sp.getString("PW","132"));
+        up = findViewById(R.id.pass);
+        SharedPreferences sp = getSharedPreferences("test", MODE_PRIVATE);
+        username.setText(sp.getString("NAME", ""));
+        up.setText(sp.getString("PW", "132"));
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        Switch sw = findViewById(R.id.switch1);
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                isNext=isChecked;
+                TextView ty=findViewById(R.id.type);
+                ty.setText(isNext?getString(R.string.Name):getString(R.string.word));
             }
         });
     }
